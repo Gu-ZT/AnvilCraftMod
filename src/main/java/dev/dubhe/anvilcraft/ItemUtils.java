@@ -24,23 +24,25 @@ public interface ItemUtils {
         return to;
     }
 
-    static ItemStack removeEnchant(ItemStack stack, Enchantment enchantment) {
+    static boolean removeEnchant(ItemStack stack, Enchantment enchantment) {
         CompoundTag tag = stack.getOrCreateTag();
         if (!tag.contains(TAG_ENCH, 9)) {
             tag.put(TAG_ENCH, new ListTag());
         }
         ListTag listTag = stack.getTag().getList(TAG_ENCH, 10);
         tag.remove(TAG_ENCH);
+        boolean bl = false;
         for (Tag tag1 : listTag) {
             if (!(tag1 instanceof CompoundTag tag2)) continue;
             ResourceLocation id = EnchantmentHelper.getEnchantmentId(tag2);
             ResourceLocation id1 = EnchantmentHelper.getEnchantmentId(enchantment);
             if (!id.equals(id1)) continue;
             listTag.remove(tag1);
+            bl = true;
             break;
         }
         tag.put(TAG_ENCH, listTag);
         stack.setTag(tag);
-        return stack;
+        return bl;
     }
 }

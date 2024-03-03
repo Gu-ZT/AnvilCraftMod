@@ -39,8 +39,7 @@ public class ChangeablePickaxeItem extends PickaxeItem {
         int toLevel = toItem.equals(ModItems.CHANGEABLE_PICKAXE_FORTUNE) ? 3 : 1;
         ItemStack toStack = new ItemStack(toItem);
         ItemUtils.ItemStackDataCopy(fromStack, toStack);
-        ItemUtils.removeEnchant(toStack, fromEnchant);
-        toStack.enchant(toEnchant, toLevel);
+        if (ItemUtils.removeEnchant(toStack, fromEnchant)) toStack.enchant(toEnchant, toLevel);
         return InteractionResultHolder.success(toStack);
     }
 }
