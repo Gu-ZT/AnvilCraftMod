@@ -24,6 +24,9 @@
     ],
     "fabric-datagen": [
       "dev.dubhe.anvilcraft.data.generator.AnvilCraftDataGenerator"
+    ],
+    "rei_client": [
+      "dev.dubhe.anvilcraft.rei.AnvilCraftREIPlugin"
     ]
   },
   "accessWidener" : "anvilcraft.accesswidener",

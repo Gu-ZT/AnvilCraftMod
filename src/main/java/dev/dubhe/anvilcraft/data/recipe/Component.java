@@ -3,6 +3,7 @@ package dev.dubhe.anvilcraft.data.recipe;
 import com.google.gson.*;
 import dev.dubhe.anvilcraft.AnvilCraft;
 import dev.dubhe.anvilcraft.util.Serializable;
+import lombok.Getter;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.FriendlyByteBuf;
@@ -153,7 +154,8 @@ public class Component implements Predicate<BlockState>, Serializable {
             return object;
         }
     }
-
+    
+    @Getter
     public abstract static class Value<T> implements Predicate<BlockState>, Serializable {
         protected final T block;
         protected final Map<String, Comparable<?>> states = new HashMap<>();
